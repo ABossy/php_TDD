@@ -78,4 +78,40 @@ class DonationFeeTest extends TestCase
         $expected = 500;
         $this->assertEquals($expected, $actual);
      }
+
+     public function testSummary()
+     {
+         // Given 
+        $donationFees = new DonationFee(1000, 20);
+        // when 
+        $actual = $donationFees-> getSummary();   
+        // then
+         $expected = array(
+             "donation" => 1000,
+             "fixedFee" => 50,
+             "commission"=> 200,
+             "fixeAndCommission"=> 250,
+             "amountCollected"=> 750,   
+         );
+         $this->assertEquals($expected, $actual);
+      
+     }
+
+     public function testSummary2()
+     {
+         // Given 
+        $donationFees = new DonationFee(10000, 20);
+        // when 
+        $actual = $donationFees-> getSummary();   
+        // then
+         $expected = array(
+             "donation" => 10000,
+             "fixedFee" => 50,
+             "commission"=> 2000,
+             "fixeAndCommission"=> 500,
+             "amountCollected"=> 9500,   
+         );
+         $this->assertEquals($expected, $actual);
+      
+     }
 }

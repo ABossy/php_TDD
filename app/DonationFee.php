@@ -14,6 +14,8 @@ class DonationFee
 
     private $donation;
     private $commissionPercentage;
+    private $fixedFee;
+  
 
     public function __construct($donation, $commissionPercentage)
      { 
@@ -28,6 +30,7 @@ class DonationFee
     } 
         $this->donation = $donation;
         $this->commissionPercentage = $commissionPercentage;
+        $this->fixedFee = $fixedFee = 50;
 
     }
 
@@ -46,7 +49,7 @@ class DonationFee
     //Total frais limité à 5euros (500)
     public function getFixedAndCommissionFeeAmount()
     { 
-        $totalFee = $this->getCommissionAmount() + 50;
+        $totalFee = $this->getCommissionAmount() + $this->fixedFee;
         if($totalFee > 500){
             return 500;
         } else{
@@ -54,6 +57,15 @@ class DonationFee
         }
         
     }
-
-
+    // tableau associatif 
+    public function getSummary()
+    {
+        return array(
+            "donation" =>$this->donation,
+            "fixedFee" =>$this->fixedFee,
+            "commission"=> $this->getCommissionAmount(),
+            "fixeAndCommission"=> $this->getFixedAndCommissionFeeAmount(),
+            "amountCollected"=> $this->donation - $this->getFixedAndCommissionFeeAmount(),   
+        );
+  }
 }
