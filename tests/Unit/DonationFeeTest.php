@@ -37,7 +37,7 @@ class DonationFeeTest extends TestCase
         $actual = $donationFees->getAmountCollected();
 
         // Le montant récolté doit être de 70
-        $expected = 70;
+        $expected = 20;
         $this->assertEquals($expected, $actual);
     }
 

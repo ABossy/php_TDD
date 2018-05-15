@@ -43,7 +43,7 @@ class DonationFee
      // retourner le montant perçu par le porteur du projet 
     public function getAmountCollected()
     {
-     return $this->donation - $this->getCommissionAmount();      
+     return $this->donation - $this->getFixedAndCommissionFeeAmount();      
        
     }
     //Total frais limité à 5euros (500)
