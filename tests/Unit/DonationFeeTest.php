@@ -7,6 +7,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
+
 class DonationFeeTest extends TestCase
 {
     /**
@@ -40,4 +41,10 @@ class DonationFeeTest extends TestCase
         $expected = 70;
         $this->assertEquals($expected, $actual);
     }
+
+    public function testCommissionException()
+    {
+        $this->expectException(\Exception::class);
+        $donationFees= new DonationFee(100,50);
+     }
 }
