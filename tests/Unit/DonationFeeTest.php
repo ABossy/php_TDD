@@ -56,4 +56,15 @@ class DonationFeeTest extends TestCase
         $donationFees= new DonationFee(80,10);
         
      }
+   
+     public function testFixedAndCommissionFeeAmount()
+     {
+         // Given
+        $donationFees = new DonationFee(100, 20);
+        // When
+        $actual = $donationFees->getFixedAndCommissionFeeAmount();
+        // Then
+        $expected = 70;
+        $this->assertEquals($expected, $actual);
+     }
 }

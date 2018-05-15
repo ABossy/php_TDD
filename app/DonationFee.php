@@ -31,18 +31,23 @@ class DonationFee
 
     }
 
+     // retourner le montant de la commission prélevée par le site
     public function getCommissionAmount()
     {
-       // retourner le montant de la commission prélevée par le site
         return $this->donation * $this->commissionPercentage /100;
          
     }
-
+     // retourner le montant perçu par le porteur du projet 
     public function getAmountCollected()
     {
-      // retourner le montant perçu par le porteur du projet 
-     return $this->donation - $this->getCommissionAmount();
-        
+     return $this->donation - $this->getCommissionAmount();      
        
     }
+    //ajouter des frais fixes de 0,50 € prélevés par le site.
+    public function getFixedAndCommissionFeeAmount()
+    {
+        return $this->getCommissionAmount() + 50;
+    }
+
+
 }
