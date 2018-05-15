@@ -43,10 +43,16 @@ class DonationFee
      return $this->donation - $this->getCommissionAmount();      
        
     }
-    //ajouter des frais fixes de 0,50 € prélevés par le site.
+    //Total frais limité à 5euros (500)
     public function getFixedAndCommissionFeeAmount()
-    {
-        return $this->getCommissionAmount() + 50;
+    { 
+        $totalFee = $this->getCommissionAmount() + 50;
+        if($totalFee > 500){
+            return 500;
+        } else{
+            return $totalFee;
+        }
+        
     }
 
 

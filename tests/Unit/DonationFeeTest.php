@@ -67,4 +67,15 @@ class DonationFeeTest extends TestCase
         $expected = 70;
         $this->assertEquals($expected, $actual);
      }
+
+     public function testMaxFee500()
+     {
+         // Given
+        $donationFees = new DonationFee(10000, 20);
+        // When
+        $actual = $donationFees->getFixedAndCommissionFeeAmount();
+        // Then
+        $expected = 500;
+        $this->assertEquals($expected, $actual);
+     }
 }
