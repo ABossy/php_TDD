@@ -30,7 +30,6 @@ class DonationFeeTest extends TestCase
 
     public function testAmountCollected()
     {
-    
         // Donation de 100 et commission de 30%
         $donationFees = new DonationFee(100, 30);
 
@@ -43,8 +42,18 @@ class DonationFeeTest extends TestCase
     }
 
     public function testCommissionException()
-    {
+    {   
         $this->expectException(\Exception::class);
+        // Donation de 100 et commission de 50%
         $donationFees= new DonationFee(100,50);
+        
+     }
+
+     public function testDonationException()
+    {   
+        $this->expectException(\Exception::class);
+        // Donation de 80 et commission de 10%
+        $donationFees= new DonationFee(80,10);
+        
      }
 }

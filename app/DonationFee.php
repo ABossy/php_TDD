@@ -17,14 +17,17 @@ class DonationFee
 
     public function __construct($donation, $commissionPercentage)
      { 
-        $this->donation = $donation;
-        $this->commissionPercentage = $commissionPercentage;
-
-        //Le pourcentage de commission doit être un être compris entre 0 et 30 %, dans le
+      //Le pourcentage de commission doit être compris entre 0 et 30 %
      // cas contraire la class retournera une ​Exception​ 
     if ($commissionPercentage > 30){
         throw new \Exception("pas ok");
     }
+    // Montant de la donation doit etre > 100, cas contraire retourne une Exception.
+   if ($donation < 100){
+        throw new \Exception("pas ok");
+    } 
+        $this->donation = $donation;
+        $this->commissionPercentage = $commissionPercentage;
 
     }
 
@@ -38,8 +41,7 @@ class DonationFee
     public function getAmountCollected()
     {
       // retourner le montant perçu par le porteur du projet 
-    // return $this->donation - (($this->donation * $this->commissionPercentage) /100) ;
-    return $this->donation - $this->getCommissionAmount();
+     return $this->donation - $this->getCommissionAmount();
         
        
     }
