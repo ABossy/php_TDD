@@ -5,20 +5,25 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Project Astrid</title>
+        <title>Projet TDD</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
         <!-- Styles -->
         <style>
             html, body {
-                background-color: lightblue;
-                color: #636b6f;
+                background-color: lightgrey;
+                color: black;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
+            }
+
+            .navbar{
+                font-size:25px;
+                margin-bottom:400px;
             }
 
             .full-height {
@@ -46,7 +51,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 20px;
             }
 
             .links > a {
@@ -65,22 +70,16 @@
         </style>
     </head>
     <body>
+    @include('navbar')
         <div class="flex-center position-ref full-height">
-           
-                <div class="top-right links">
-                  
-                        <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                
-                </div>
-                
-
             <div class="content">
                 <div class="title m-b-md">
-                <h1>liste des projets</h1>
+                    @yield('titre')
+                    @yield('image')
+                    @yield('contenu')
+                    @yield('image2')
+                    @yield('contenu2')
                 </div>
-
             </div>
         </div>
     </body>

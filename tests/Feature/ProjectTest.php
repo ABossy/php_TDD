@@ -12,9 +12,11 @@ class ProjectTest extends TestCase
      *
      * @return void
      */
+
+    // Test du statut http 
     public function testBasicTest()
     {
-        $response = $this->get('/project');
+        $response = $this->get('/1');
 
         $response->assertStatus(200);
     } 
@@ -23,10 +25,10 @@ class ProjectTest extends TestCase
     public function testTitre()
     {
         $response = $this->get('/project');
-        $value="<h1>liste des projets</h1>";
+        $value="<h1>Liste des Projets</h1>";
         $response->assertSee($value);
         
     }
 
-    
+
 }

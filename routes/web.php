@@ -18,3 +18,16 @@ Route::get('/', function () {
 Route::get('/project', function () {
     return view('project');
 });
+
+Route::get('/voyage', function () {
+    return view('voyage');
+});
+
+Route::get('/humanitaire', function () {
+    return view('humanitaire');
+});
+
+//Authentification
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
