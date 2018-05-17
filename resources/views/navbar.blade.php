@@ -1,12 +1,12 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li><a href="/javascript">Dons Campus</a></li>
-        <li class="active"><a href="/">Home</a></li>
-        <li><a href="/project">Project</a></li>
-        @if ( Auth::user() &&  Auth::user()->role == 'admin') 
+        <li>Dons Campus</li>
+        <li class="active"><a href="/welcome">Home</a></li>
+        <li><a href="/project">Project</a></li> 
+        @if ( Auth::user() &&  Auth::user()->role == 'admin')
+        <li><a href="/project">Project</a></li> 
         <li><a href="/">Home</a></li>
-        <li><a href="/project">Project</a></li>
         <li><a href="/3">News</a></li>  
       </ul>
       @endif 

@@ -23,7 +23,7 @@
 
             .navbar{
                 font-size:25px;
-                margin-bottom:400px;
+                margin-bottom:100px;
             }
 
             .full-height {
@@ -71,7 +71,6 @@
     </head>
     <body>
     @include('navbar')
-        <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
                     @yield('titre')
@@ -81,6 +80,5 @@
                     @yield('contenu2')
                 </div>
             </div>
-        </div>
     </body>
 </html>

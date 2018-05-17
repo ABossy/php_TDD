@@ -11,20 +11,16 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/project', function () {
-    return view('project');
-});
+Route::get('/project','ProjectController@index');
 
-Route::get('/voyage', function () {
-    return view('voyage');
-});
+Route::get('/project/show/{id}','ProjectController@show')->name('detailprojet');
 
-Route::get('/humanitaire', function () {
-    return view('humanitaire');
+Route::get('/pagedon', function (){
+return view('pagedon');
 });
 
 //Authentification

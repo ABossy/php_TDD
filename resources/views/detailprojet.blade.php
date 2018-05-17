@@ -2,7 +2,7 @@
                 
  
 @section('titre')
-<h1><strong>Voyage en Australie</h1></strong>
+<h1><strong>{{$listeprojet->title}}</h1></strong>
 
 @endsection
 
@@ -10,12 +10,12 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-7">
-        <img src="image/australie.png" alt="photo australie"></a> 
+        <img src="{{$listeprojet->image}}"width="500" height="300"alt="photo test"></a> 
         </div>
         <div class="col-lg-4">
-        <h2>Faire un Don</h2>
-        <button id="Contribuer au Projet" name="Contribuer au Projet" class="btn btn-info">valider</button>
-        <p>Contribuer au Projet Australie en faisant 1 Don</p>
+        <h2>Contribuer au Projet</h2>
+        <a href="/pagedon"<button id="Contribuer au Don" name="Page Don" 
+        class="btn btn-info">FAIRE UN DON</button></a>
         </div>
     </div>
 </div>
@@ -28,23 +28,15 @@
     <div class="row">
         <div class="col-lg-offset-1 col-lg-8"></div>
 
-<h2><strong>Au départ, un constat :</h2></strong><br>
-<p>nous nous reconnaissons de moins en moins dans le monde dans lequel nous vivons.<br>
-Nos sociétés humaines évoluent entre contradiction et absurdité, jusqu'à ce que peu à peu, nos comportements renversent le fragile équilibre de la planète pleine de vie qui nous héberge.<br>
-De nombreux scientifiques et penseurs s'accordent sur ce point : notre seule espèce humaine est en train de courir à sa perte, entrainant avec elle tout son écosystème.<br>
-Nous n'avons pas envie de contribuer plus longtemps à la destruction de cette nature que nous aimons et admirons, mais difficile de savoir par où commencer, et comment s'y prendre.
-Alors on a réfléchi...<br>
-...et en 2018, nous avons décidé qu'il nous faudrait partir faire un tour du monde pour comprendre comment nous pourrions devenir acteurs d'un changement à nos yeux nécessaire.<br>
-Mais aussi s'immerger d'avantage dans ce monde sauvage dont nous voulons nous rapprocher.</p>
- </div>
-        </div>   
+
+<p>{{$listeprojet->content}}</p>
 @endsection
 
 @section('image2')
 <div class="container">
     <div class="row">
         <div class="col-lg-12"></div>
-        <img src="image/map.jpg" alt="photo australie"></a> 
+        <img src="{{$listeprojet->image}}"width="500" height="300"alt="photo test"></a>
         </div>
         </div>
 @endsection

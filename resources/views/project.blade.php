@@ -7,20 +7,22 @@
 @endsection
 
 @section('contenu')
-<div class="container">
-    <div class="row">
-        <div class="col-lg-offset-2 col-lg-7"></div>
-        <h2>Projet 1</h2>
-        <a href="http://localhost:8000/voyage"><img src="image/australie.png" alt="photo australie"></a> 
-        <p>Voyage en Australie</p>
-    </div>
 
+<div class="container">
+@foreach($listeprojet as $projet)
     <div class="row">
         <div class="col-lg-offset-2 col-lg-7"></div>
-        <h2>Projet 2</h2>
-        <a href="http://localhost:8000/humanitaire"><img src="image/ecole.png" alt="Photo Ecole"/>
-        <p>construction d'une école</p>
+        <h2>{{$projet->title}}</h2>
+        <a href="{{route('detailprojet',[$projet->id])}}"><img src="image/australie.png" alt="photo australie"></a> 
+        <p>{{$projet->content}}</p>
+        <a href='{{route('detailprojet',[$projet->id])}}'<button id="Contribuer au Projet"
+         name="Contribuer au Projet" class="btn btn-info">VOIR LE PROJET</button></a>
     </div>
-    <div class="row"></div>
-</div>
+    @endforeach
+   
+
+
+
+
+
 @endsection
