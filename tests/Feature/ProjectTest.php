@@ -73,9 +73,9 @@ class ProjectTest extends TestCase
         $factory = factory(\App\Project::class)->create();
         $response = $this->get('/project/show/'.$factory->id);
         $value= $factory->title;
+        dump($value);
         $response->assertSee($value);
-        
-
+     
     }
 
     // TEST unitaire validant la relation entre les models ​Project​ et ​User

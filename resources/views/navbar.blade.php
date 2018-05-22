@@ -2,7 +2,7 @@
     <div class="container-fluid">
       <ul class="nav navbar-nav">
         <li>Dons Campus</li>
-        <li class="active"><a href="/welcome">Home</a></li>
+        <li class="active"><a href="/">Home</a></li>
         <li><a href="/project">Project</a></li> 
         @if ( Auth::user() &&  Auth::user()->role == 'admin')
         <li><a href="/project">Project</a></li> 
