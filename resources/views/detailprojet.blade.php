@@ -2,7 +2,11 @@
                 
  
 @section('titre')
-<h1><strong>{{$listeprojet->title}}</h1></strong>
+<h1><strong>{{$unProjet->title}}</strong></h1>
+<h2>Author:{{$unProjet->user->name}} <br>Contact:{{$unProjet->user->email}}</h2>
+
+
+
 
 @endsection
 
@@ -10,11 +14,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-7">
-        <img src="{{$listeprojet->image}}"width="500" height="300"alt="photo test"></a> 
+        <img src="{{$unProjet->image}}"width="500" height="300"alt="photo test"></a> 
         </div>
         <div class="col-lg-4">
         <h2>Contribuer au Projet</h2>
-        <a href="/pagedon"<button id="Contribuer au Don" name="Page Don" 
+        <a href="/pagedon"><button id="ContribuerauDon" name="Page Don" 
         class="btn btn-info">FAIRE UN DON</button></a>
         </div>
     </div>
@@ -29,14 +33,14 @@
         <div class="col-lg-offset-1 col-lg-8"></div>
 
 
-<p>{{$listeprojet->content}}</p>
+<p>{{$unProjet->content}}</p>
 @endsection
 
 @section('image2')
 <div class="container">
     <div class="row">
         <div class="col-lg-12"></div>
-        <img src="{{$listeprojet->image}}"width="500" height="300"alt="photo test"></a>
+        <img src="{{$unProjet->image}}"width="500" height="300"alt="photo test"></a>
         </div>
         </div>
 @endsection

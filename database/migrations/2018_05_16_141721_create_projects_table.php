@@ -15,11 +15,13 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('auth')->default('user');
+            $table->string('auth');
             $table->string('title');
             $table->string('image');
             $table->text('content');
             $table->timestamps();
+        
+            $table->integer('user_id')->unsigned()->index();
         });
     }
 

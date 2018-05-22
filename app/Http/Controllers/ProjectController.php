@@ -27,7 +27,8 @@ class ProjectController extends Controller
 
     public function show($id)
     {
-        $listeprojet = Project::find($id);
-        return view('detailprojet',compact('listeprojet'));
+        $unProjet = Project::find($id);
+        return view('detailprojet',compact('unProjet'));
+
     }
 }
