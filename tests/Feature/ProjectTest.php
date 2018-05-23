@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
+use App\Project;
 
 class ProjectTest extends TestCase
 {
@@ -21,7 +22,7 @@ class ProjectTest extends TestCase
     // Test du statut http 
     public function testBasicTest()
     {
-        $response = $this->get('/welcome');
+        $response = $this->get('/');
 
         $response->assertStatus(200);
 
@@ -100,4 +101,17 @@ class ProjectTest extends TestCase
  
     }
 
+      // TEST validant la présence du titre d’un projet sur la page de détails d’un projet
+      public function testTitreProjet2()
+      {
+          $factory = factory(\App\Project::class)->create();
+          $value= $factory->title; // je stock le titre dans ma variable value
+          $response =$this->get('/project/show/'.$factory->id);
+          $projet= Project::all()->first();
+          $expected= $projet->title;
+          $this->assertEquals($value,$expected);
+          dump($value);
+          dump($expected);
+       
+      }
 }
