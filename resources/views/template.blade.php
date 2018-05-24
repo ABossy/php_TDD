@@ -75,6 +75,7 @@
                 <div class="title m-b-md">
                     @yield('titre')
                     @yield('image')
+                    @yield('form')
                     @yield('contenu')
                     @yield('image2')
                     @yield('contenu2')
