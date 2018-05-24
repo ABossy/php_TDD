@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Project;
+use App\User;
 
 class ProjectController extends Controller
 {
@@ -31,6 +33,16 @@ class ProjectController extends Controller
         $unProjet = Project::find($id);
         return view('detailprojet',compact('unProjet'));
 
+    }
+
+    public function edit($id)
+    {
+        $project = Project::find($id);
+        $user = Auth::user();
+        if ($project->user_id != $user->id){
+            abort(403, "vous n'etes pas l'auteur du projet");
+        }
+        return view('editproject');
     }
 
    
