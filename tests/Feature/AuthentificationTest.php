@@ -27,9 +27,9 @@ class AuthentificationTest extends TestCase
     public function testPageWithoutlogin()
     {
         $factory = factory(\App\Project::class)->create();
-        $this->expectException(\Exception::class);
         $response=$this->withSession(['foo'=>'bar'])
                         ->get('/project/show/'.$factory->id);
+        $response->assertStatus(200);
                       
     }
 
@@ -41,5 +41,34 @@ class AuthentificationTest extends TestCase
                         ->withSession(['foo'=>'bar'])
                         ->get('/project/show/'.$factory->id);
         $response->assertStatus(200);
+    }
+
+    public function testEditProjectAsAuthor()
+    {
+        $user1= factory(User::class)->create();
+        $user2= factory(User::class)->create();
+        $factory = factory(\App\Project::class)->create([
+            'auth'=> $user1->name,
+            'user_id'=> $user1->id,
+        ]);
+        $response=$this->actingAs($user1)
+                        ->withSession(['foo'=>'bar'])
+                        ->get('/editproject/'.$factory->id);
+        $response->assertStatus(200);
+    }
+
+    public function testEditProjectAsUser()
+    {
+        $this->expectException(\Exception::class);// on s'attend a avoir une exception "Erreur"
+        $user1= factory(User::class)->create();
+        $user2= factory(User::class)->create();
+        $factory = factory(\App\Project::class)->create([
+            'auth'=> $user1->name,
+            'user_id'=> $user1->id,
+        ]);
+        $response=$this->actingAs($user2)
+                        ->withSession(['foo'=>'bar'])
+                        ->get('/editproject/'.$factory->id);
+        $response->assertStatus(404);
     }
 }
