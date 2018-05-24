@@ -1,17 +1,15 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li>Dons Campus</li>
+        <li> Dons Campus</li>
         <li class="active"><a href="/">Home</a></li>
         <li><a href="/project">Project</a></li> 
-        @if ( Auth::user() &&  Auth::user()->role == 'admin')
-        <li><a href="/project">Project</a></li> 
-        <li><a href="/">Home</a></li>
-        <li><a href="/3">News</a></li>  
+        @if ( Auth::user())
+        <li><a href="/creation">Créer un Projet</a></li>  
       </ul>
       @endif 
-  {{-- ici on verifie avec le if si Auth::user() existe et si il a un role d'admin.
-  dans ce cas les liens sont ouverts à defaut il n'y aura que le lien Home et ventes de visible --}}
+  {{-- ici on verifie avec le if si Auth::user() existe 
+  dans ce cas les liens sont ouverts à defaut il n'y aura que le lien Home et project de visible --}}
 
       @guest  
       <li><a href="{{ route('login') }}">Login</a></li>
