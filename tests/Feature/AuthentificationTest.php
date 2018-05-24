@@ -24,22 +24,24 @@ class AuthentificationTest extends TestCase
 
     }
 
+    //je m'attend à une exception car sans login pas acces à la création.
     public function testPageWithoutlogin()
     {
+        $this->expectException(\Exception::class);
         $factory = factory(\App\Project::class)->create();
         $response=$this->withSession(['foo'=>'bar'])
-                        ->get('/project/show/'.$factory->id);
-        $response->assertStatus(200);
+                        ->get('/creation');
+        $response->assertStatus(404);
                       
     }
 
+    //en tant que user je peux accéder à la page d'une création
     public function testPageWithlog()
     {
         $user= factory(User::class)->create();
         $factory = factory(\App\Project::class)->create();
         $response=$this->actingAs($user)
-                        ->withSession(['foo'=>'bar'])
-                        ->get('/project/show/'.$factory->id);
+                        ->get('/creation');
         $response->assertStatus(200);
     }
 
@@ -52,7 +54,6 @@ class AuthentificationTest extends TestCase
             'user_id'=> $user1->id,
         ]);
         $response=$this->actingAs($user1)
-                        ->withSession(['foo'=>'bar'])
                         ->get('/editproject/'.$factory->id);
         $response->assertStatus(200);
     }
@@ -67,7 +68,6 @@ class AuthentificationTest extends TestCase
             'user_id'=> $user1->id,
         ]);
         $response=$this->actingAs($user2)
-                        ->withSession(['foo'=>'bar'])
                         ->get('/editproject/'.$factory->id);
         $response->assertStatus(404);
     }
