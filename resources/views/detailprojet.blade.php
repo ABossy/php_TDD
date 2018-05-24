@@ -18,7 +18,7 @@
             <a href="/pagedon"><button id="ContribuerauDon" name="PageDon" 
                 class="btn btn-info">FAIRE UN DON</button></a>
                 <h2>Editer le Projet</h2>
-                <a href="/editproject"><button id="EditerProjet" name="PageEdit" 
+                <a href="/editproject/{{$unProjet->id}}"><button id="EditerProjet" name="PageEdit" 
                     class="btn btn-success">EDITER LE PROJET</button></a>
             </div> 
                 <div class="col-lg-12">
