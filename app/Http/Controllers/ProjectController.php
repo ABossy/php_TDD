@@ -21,6 +21,8 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     // fonction qui liste tous les projets
     public function index()
     {      
         $listeprojet = Project::all();
@@ -35,6 +37,7 @@ class ProjectController extends Controller
 
     }
 
+    // fonction d'authentification
     public function edit($id)
     {
         $project = Project::find($id);
@@ -42,8 +45,35 @@ class ProjectController extends Controller
         if ($project->user_id != $user->id){
             abort(403, "vous n'etes pas l'auteur du projet");
         }
-        return view('editproject');
+        return view('editproject',['project'=>$project]);
     }
 
-   
+    // Modifier un projet
+    public function modifproject($id)
+    {
+        $edit = Project::find($id);
+        $edit->title = request('title');
+        $edit->image = request('website');
+        $edit->updated_at = request('date');
+        $edit->content= request('message');
+        $edit->save();
+        return redirect('/project/show/'.$id);
+        
+    } 
+
+    // Nouvelle création Projet
+    public function store(Request $request)
+    {
+        $user = Auth::User();
+        $donnees = new Project;
+        $donnees->auth = request('auteur');
+		$donnees->title = request('title');
+		$donnees->image = request('website');
+        $donnees->created_at = request('date');
+        $donnees->content= request('message');
+        $donnees->user_id =($user->id);
+		$donnees->save();//sauvegarde en base de donnees.
+		return redirect('project');
+	} 
+    
 }
