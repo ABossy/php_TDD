@@ -23,6 +23,11 @@ Route::get('/pagedon', function (){
 return view('pagedon');
 });
 
+Route::get('/editproject')->name('editproject')->middleware('auth');
+    
+    
+
+
 //Authentification
 Auth::routes();
 
