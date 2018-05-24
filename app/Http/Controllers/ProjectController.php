@@ -32,4 +32,6 @@ class ProjectController extends Controller
         return view('detailprojet',compact('unProjet'));
 
     }
+
+   
 }
