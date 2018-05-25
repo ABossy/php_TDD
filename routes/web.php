@@ -39,7 +39,8 @@ Route::get('/editproject/{id}','ProjectController@edit')->name('editproject')->m
 // page modification d'un projet
 Route::post('/modif/{id}','ProjectController@modifproject')->name('projet.modif')->middleware('auth');
     
-
+// supprimer un projet
+Route::delete('/project/show/{id}','ProjectController@destroy')->name('projet.delete')->middleware('auth');
 
 //Authentification
 Auth::routes();
