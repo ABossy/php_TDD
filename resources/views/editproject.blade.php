@@ -13,7 +13,7 @@
             <div class="span3">
                 <label>Titre</label> 
                 <input class="span3" name="title" type="text">
-                <label>image</label> 
+                <label>image : </label> 
                 <input class="span3" type="url"  name="website"><hr>
                 <label>date de Modification</label>
                 <input class="span3" name="date" type="date"><hr>
