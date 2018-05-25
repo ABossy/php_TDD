@@ -16,7 +16,7 @@
                 <label>Titre</label> 
                 <input class="span3" name="title" type="text">
                 <label>image</label> 
-                <input class="span3" type="url"  name="website">
+                <input class="span3" type="url"  name="image">
                 <label>date de Publication</label>
                 <input class="span3" name="date" type="date"><hr>
                 <label>Detail du projet</label><br> 
@@ -29,7 +29,7 @@
     <div class="form-group">
 	  <label class="col-md-4 control-label" for=""></label>
 	  <div class="col-md-4">
-	    <button id="" name="" class="btn btn-success" type="submit">Ajouter</button>
+	    <button id="" name="Ajouter" class="btn btn-success" type="submit">Ajouter</button>
 	  </div>
 	</div>
 </form>
