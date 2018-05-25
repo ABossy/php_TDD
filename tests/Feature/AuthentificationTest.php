@@ -22,13 +22,12 @@ class AuthentificationTest extends TestCase
         $response->assertStatus(200);
 
     }
-
-     
+ 
      // TEST validant qu’un utilisateur non connecté ne peut pas ajouter un projet
     public function testPageWithoutlogin()
     {
         $this->expectException(\Exception::class);//je m'attend à une exception car sans login pas acces à la création.
-        $response=$this->get('/creation');
+        $response= $this->get('/creation');
                     
     }
 
@@ -36,7 +35,7 @@ class AuthentificationTest extends TestCase
     public function testPageWithlog()
     {
         $user= factory(User::class)->create();
-        $response=$this->actingAs($user)
+        $response= $this->actingAs($user)
                         ->get('/creation');
         $response->assertStatus(200);
     }
@@ -44,8 +43,8 @@ class AuthentificationTest extends TestCase
     //TEST validant que seul l’auteur d’un projet peut l’éditer 
     public function testEditProjectAsAuthor()
     {
-        $factory = factory(\App\Project::class)->create();
-        $response=$this->actingAs($factory->user)
+        $factory= factory(\App\Project::class)->create();
+        $response= $this->actingAs($factory->user)
                         ->get('/editproject/'.$factory->id);
         $response->assertStatus(200);
     }
@@ -55,26 +54,47 @@ class AuthentificationTest extends TestCase
     {
         $this->expectException(\Exception::class);// on s'attend a avoir une exception "Erreur"
         $user2= factory(User::class)->create();
-        $factory = factory(\App\Project::class)->create();
-        $response=$this->actingAs($user2)
+        $factory= factory(\App\Project::class)->create();
+        $response= $this->actingAs($user2)
                         ->get('/editproject/'.$factory->id);
-        $response->assertStatus(404);
+        
     }
 
-    // TEST soumission du formulaire
+    //TEST validant qu'en tant que User je ne peux pas éditer un projet. 
+    public function testUpdateProjectAsAnotherUser()
+    {
+
+        $this->expectException(\Exception::class);// on s'attend a avoir une exception "Erreur"
+        $project= factory(\App\Project::class)->create();
+
+        $user2= factory(User::class)->create();
+        $factory= factory(\App\Project::class)->make();
+        $data= array(
+            'auth'=> $factory->user->name,
+            'title'=> $factory->title, //champs du formulaire.
+            'image'=> $factory->image,
+            'message'=> $factory->content,
+            );
+
+        $response= $this->actingAs($user2)
+                        ->post('/modif/'.$project->id, $data);
+        
+    }
+    // TEST soumission du formulaire Créer un Projet.
     public function testPageCreate()
     {
-        $factory = factory(\App\Project::class)->make();//genere un projet sans le mettre dans la bdd "in memory"
-        $data = array(
-        'auth'=>$factory->user->name,
-        'title' => $factory->title,
+        $factory= factory(\App\Project::class)->make();//genere un projet sans le mettre dans la bdd "in memory"
+        $data= array(
+        'auth'=> $factory->user->name,
+        'title' => $factory->title, //champs du formulaire.
         'image'=> $factory->image,
         'message'=> $factory->content,
         );
-        $response = $this->actingAs($factory->user)
-                ->post('/edit',$data);
-        $this->assertEquals(302, $response->getStatusCode());
-        
+        $response= $this->actingAs($factory->user)
+                ->post('/edit',$data);// enregistrement des données et soumission du formulaire
+        $this->assertEquals(302, $response->getStatusCode());// 302 redirection permanente et temporaire.
     }
+
+
 
 }
