@@ -2,6 +2,7 @@
 
 @section('titre')
 <h1>Faire un Don</h1>
+
 @endsection
 
 @section('form')
