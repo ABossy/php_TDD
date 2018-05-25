@@ -26,8 +26,17 @@
                 margin-bottom:100px;
             }
 
+            .dropdown-toggle{
+                color: white;
+            }
+
+            .dropdown{
+                float: right;
+                color: white;
+            }
+
             .full-height {
-                height: 100vh;
+                height: 50vh;
             }
 
             .flex-center {
@@ -79,6 +88,7 @@
                     @yield('contenu')
                     @yield('image2')
                     @yield('contenu2')
+                    @yield('button')
                 </div>
             </div>
     </body>
