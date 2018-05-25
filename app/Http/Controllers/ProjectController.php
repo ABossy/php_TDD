@@ -66,14 +66,22 @@ class ProjectController extends Controller
     {
         $user = Auth::User();
         $donnees = new Project;
-        $donnees->auth = request('auteur');
+        $donnees->auth = $user->name;
 		$donnees->title = request('title');
-		$donnees->image = request('website');
+		$donnees->image = request('image');
         $donnees->created_at = request('date');
         $donnees->content= request('message');
         $donnees->user_id =($user->id);
 		$donnees->save();//sauvegarde en base de donnees.
 		return redirect('project');
-	} 
+    } 
+    
+    //Supprimer un projet
+    public function destroy($id)
+    {
+        $deleteproject= Project::find($id);
+        $deleteproject->delete();
+        return redirect('project');
+    }
     
 }
