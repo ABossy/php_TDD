@@ -25,14 +25,15 @@ Route::get('/pagedon', function (){
 return view('pagedon');
 });
 
+// page création projet
 Route::get('/creation', function (){
     return view('create');
     });
 
-// page création d'un projet
+// page bouton création d'un projet
 Route::post('/edit','ProjectController@store')->name('create')->middleware('auth');
 
-// page edition d'un projet
+// page edition d'un projet existant
 Route::get('/editproject/{id}','ProjectController@edit')->name('editproject')->middleware('auth');
 
 // page modification d'un projet
